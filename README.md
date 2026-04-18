@@ -1,43 +1,57 @@
-# SDN_static_routing
-# Static Routing using SDN Controller
+# 🚦 Static Routing using SDN Controller
 
-## 📌 Project Overview
+<p align="center">
+  <b>Software Defined Networking Project using POX + Mininet + Open vSwitch</b>
+</p>
 
-This project demonstrates **Static Routing in Software Defined Networking (SDN)** using the **POX Controller**, **Mininet**, and **Open vSwitch**.
-The controller installs predefined flow rules into switches so that packets always follow a fixed path determined by the controller.
-
-Unlike traditional dynamic routing, where routes may change automatically, this implementation ensures that traffic follows a manually configured static route.
+<p align="center">
+  <img src="https://img.shields.io/badge/Platform-Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" />
+  <img src="https://img.shields.io/badge/Language-Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Emulator-Mininet-2C3E50?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Controller-POX-16A085?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Protocol-OpenFlow-blue?style=for-the-badge" />
+</p>
 
 ---
 
-## 🎯 Problem Statement
+# 📌 Project Overview
+
+This project demonstrates **Static Routing in Software Defined Networking (SDN)** using the **POX Controller**, **Mininet**, and **Open vSwitch**.
+
+The SDN controller installs predefined flow rules into switches so that packets always follow a fixed route chosen by the controller.
+
+Unlike traditional dynamic routing, where paths may change automatically, this project ensures that traffic follows a manually configured static path.
+
+---
+
+# 🎯 Problem Statement
 
 Implement static routing paths using controller-installed flow rules.
 
-### Expected Tasks
+### Required Tasks
 
 * Define routing paths
 * Install flow rules manually
 * Validate packet delivery
 * Document routing behavior
-* Perform regression testing to ensure the path remains unchanged after rule reinstallation
+* Perform regression testing after rule reinstallation
 
 ---
 
-## 🛠️ Tools & Technologies Used
+# 🛠️ Tools & Technologies Used
 
-| Component      | Description                                    |
-| -------------- | ---------------------------------------------- |
-| Ubuntu         | Operating System                               |
-| Mininet        | Network emulator for creating virtual topology |
-| POX Controller | SDN controller used to install flow rules      |
-| Open vSwitch   | Virtual switch supporting OpenFlow             |
-| Python         | Used for controller and topology scripts       |
-| GitHub         | Version control and project hosting            |
+| Component    | Description             |
+| ------------ | ----------------------- |
+| Ubuntu       | Operating System        |
+| Python       | Programming Language    |
+| Mininet      | Network Emulator        |
+| POX          | SDN Controller          |
+| Open vSwitch | OpenFlow Virtual Switch |
+| GitHub       | Source Code Hosting     |
 
 ---
 
-## 🧱 Network Topology
+# 🧱 Network Topology
 
 ```text
 h1 ---- s1 ---- s2 ---- s3 ---- h2
@@ -51,19 +65,40 @@ h1 ---- s1 ---- s2 ---- s3 ---- h2
 
 ---
 
-## ⚙️ Project Files
+# 📁 Repository Structure
 
-| File Name           | Purpose                                               |
-| ------------------- | ----------------------------------------------------- |
-| `static_routing.py` | POX controller logic for installing static flow rules |
-| `mytopo.py`         | Custom Mininet topology                               |
-| `README.md`         | Project documentation                                 |
+```text
+SDN_static_routing/
+│── README.md
+│
+├── src/
+│   ├── static_routing.py
+│   └── mytopo.py
+│
+├── screenshots/
+│   ├── controller running.png
+│   ├── topology running.png
+│   ├── regression test2.png
+│   ├── flow tables.png
+│   └── regression test1.png
+│
+└── docs/
+    └── report.pdf 
+```
 
 ---
 
-## 📄 Source Code
+# 📄 Source Code Files
 
-### `static_routing.py`
+| File                    | Purpose                                       |
+| ----------------------- | --------------------------------------------- |
+| `src/static_routing.py` | Controller logic to install static flow rules |
+| `src/mytopo.py`         | Custom Mininet topology                       |
+| `README.md`             | Project documentation                         |
+
+---
+
+# ⚙️ Controller Logic (`static_routing.py`)
 
 ```python
 from pox.core import core
@@ -96,7 +131,7 @@ def launch():
 
 ---
 
-### `mytopo.py`
+# 🌐 Custom Topology (`mytopo.py`)
 
 ```python
 from mininet.topo import Topo
@@ -120,9 +155,9 @@ topos = {'mytopo': MyTopo}
 
 ---
 
-## 🚀 How to Run the Project
+# 🚀 How to Run the Project
 
-### 1️⃣ Start the Controller
+## 1️⃣ Start Controller
 
 Open Terminal 1:
 
@@ -133,7 +168,7 @@ python3 pox.py forwarding.static_routing
 
 ---
 
-### 2️⃣ Start Mininet Topology
+## 2️⃣ Start Mininet
 
 Open Terminal 2:
 
@@ -144,7 +179,7 @@ sudo mn --custom ~/mytopo.py --topo mytopo --mac --switch ovsk --controller remo
 
 ---
 
-### 3️⃣ Validate Connectivity
+## 3️⃣ Test Connectivity
 
 Inside Mininet CLI:
 
@@ -163,35 +198,56 @@ h2 -> h1
 
 ---
 
-## 🔄 Routing Behavior
+# 📸 Proof of Execution
 
-The controller installs the following forwarding rules:
+## 🔹 Controller Running
 
-### Switch s1
+![Controller Running](screenshots/controllerrunning.png)
 
-* Packets from h1 forwarded to s2
-* Return packets forwarded back to h1
+---
 
-### Switch s2
+## 🔹 Mininet Topology Running
 
-* Forwards packets between s1 and s3
+![Topology Running](screenshots/topologyrunning.png)
 
-### Switch s3
+---
 
-* Packets forwarded to h2
-* Return packets sent back to s2
+## 🔹 Flow Table Entries
 
-This ensures all traffic follows:
+![Flow Tables](screenshots/flowtables.png)
+
+---
+
+## 🔹 Regression Test
+
+![Regression Test](screenshots/regressiontest1.png)
+
+---
+## 🔹 Regression Test
+
+![Regression Test](screenshots/regressiontest2.png)
+
+# 🔄 Routing Behavior
+
+The installed rules force packets to follow:
 
 ```text
 h1 → s1 → s2 → s3 → h2
 ```
 
+### Switch-wise Behavior
+
+| Switch | Action                    |
+| ------ | ------------------------- |
+| s1     | Forward between h1 and s2 |
+| s2     | Forward between s1 and s3 |
+| s3     | Forward between s2 and h2 |
+
 ---
 
-## 📊 Flow Table Verification
+# 📊 Flow Table Verification
 
-Run the following commands in Mininet:
+Run inside Mininet:
 
 ```bash
 sh ovs-ofctl dump-flows s1
@@ -199,15 +255,13 @@ sh ovs-ofctl dump-flows s2
 sh ovs-ofctl dump-flows s3
 ```
 
-These commands display installed OpenFlow rules in each switch.
+These commands display OpenFlow entries installed by the controller.
 
 ---
 
-## 🧪 Regression Testing
+# 🧪 Regression Testing
 
-To verify routing consistency after reinstalling rules:
-
-### Delete Existing Rules
+## Delete Existing Rules
 
 ```bash
 sh ovs-ofctl del-flows s1
@@ -215,7 +269,7 @@ sh ovs-ofctl del-flows s2
 sh ovs-ofctl del-flows s3
 ```
 
-### Restart Controller and Retest
+## Restart Controller and Test Again
 
 ```bash
 pingall
@@ -224,41 +278,44 @@ pingall
 ### Expected Result
 
 * Connectivity remains successful
-* Same static path is preserved
+* Same static route is restored
 
 ---
 
-## ✅ Outcomes
+# ✅ Results
 
-* Successfully implemented static routing using SDN controller
-* Installed manual OpenFlow flow rules
-* Verified packet delivery between hosts
-* Inspected switch flow tables
+* Successfully implemented static routing using SDN
+* Installed manual OpenFlow rules
+* Verified packet delivery
+* Validated flow tables
 * Performed regression testing successfully
 
 ---
 
-## 📚 Concepts Demonstrated
+# 📚 Concepts Demonstrated
 
 * Software Defined Networking (SDN)
-* Separation of Control Plane and Data Plane
+* Control Plane vs Data Plane
 * OpenFlow Protocol
 * Static Routing
 * Flow Rule Installation
-* Network Emulation using Mininet
+* Mininet Network Emulation
 
 ---
 
-##  Name and SRN
+# 👨‍💻 Author
 
-**Sachin S** - **PES2UG24CS422**
+**Sachin S**
+**SRN:** PES2UG24CS422
 
 ---
 
-## 📌 Future Enhancements
+# 📌 Future Enhancements possibilities 
 
-* Multi-path static routing
-* Dynamic route updates
-* Failure recovery mechanisms
-* Traffic monitoring dashboard
-* QoS-based routing
+* Dynamic Routing
+* Multi-path Routing
+* Link Failure Recovery
+* QoS-based Traffic Control
+* Traffic Monitoring Dashboard
+
+.....
