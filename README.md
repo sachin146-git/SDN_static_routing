@@ -78,12 +78,12 @@ SDN_static_routing/
 ├── screenshots/
 │   ├── controller running.png
 │   ├── topology running.png
-│   ├── regression test2.png
 │   ├── flow tables.png
-│   └── regression test1.png
+│   ├── regression test1.png
+│   └── regression test2.png
 │
 └── docs/
-    └── report.pdf 
+    └── report.pdf (optional)
 ```
 
 ---
@@ -202,30 +202,33 @@ h2 -> h1
 
 ## 🔹 Controller Running
 
-![Controller Running](screenshots/controllerrunning.png)
+![Controller Running](screenshots/controller%20running.png)
 
 ---
 
-## 🔹 Mininet Topology Running
+## 🔹 Topology Running + Ping Test
 
-![Topology Running](screenshots/topologyrunning.png)
+![Topology Running](screenshots/topology%20running.png)
 
 ---
 
 ## 🔹 Flow Table Entries
 
-![Flow Tables](screenshots/flowtables.png)
+![Flow Tables](screenshots/flow%20tables.png)
 
 ---
 
-## 🔹 Regression Test
+## 🔹 Regression Test - Flow Rules Deleted
 
-![Regression Test](screenshots/regressiontest1.png)
+![Regression Test 1](screenshots/regression%20test1.png)
 
 ---
-## 🔹 Regression Test
 
-![Regression Test](screenshots/regressiontest2.png)
+## 🔹 Regression Test - Connectivity Restored
+
+![Regression Test 2](screenshots/regression%20test2.png)
+
+---
 
 # 🔄 Routing Behavior
 
@@ -310,7 +313,7 @@ pingall
 
 ---
 
-# 📌 Future Enhancements possibilities 
+# 📌 Future Enhancement Possibilities 
 
 * Dynamic Routing
 * Multi-path Routing
@@ -318,4 +321,5 @@ pingall
 * QoS-based Traffic Control
 * Traffic Monitoring Dashboard
 
-.....
+---
+
